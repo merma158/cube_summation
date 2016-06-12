@@ -54,9 +54,9 @@ class CubeSummation
     @cube = initialize_cube if @cube.nil?
       
     command.delete_at(0)
-    x     = command[0].to_i  # X
-    y     = command[1].to_i  # Y
-    z     = command[2].to_i  # Z
+    x     = command[0].to_i - 1 # X
+    y     = command[1].to_i - 1 # Y
+    z     = command[2].to_i - 1 # Z
     value = command[3].to_i  # W
 
     set_coordenate_xyz(x, y, z, value)
@@ -64,6 +64,27 @@ class CubeSummation
 
   def execute_query(command = [])
     @cube = initialize_cube if @cube.nil?
+    command.delete_at(0)
+
+    x1     = command[0].to_i - 1  # X1
+    y1     = command[1].to_i - 1  # Y1
+    z1     = command[2].to_i - 1  # Z1
+    # ============================
+    x2     = command[3].to_i - 1  # X2
+    y2     = command[4].to_i - 1  # Y2
+    z2     = command[5].to_i - 1  # Z2
+
+    acum   = 0
+
+    for i in x1..x2
+      for j in y1..y2
+        for k in z1..z2
+          acum += @cube[i][j][k]
+        end
+      end
+    end
+
+    puts acum
   end
 
   private
@@ -75,9 +96,10 @@ class CubeSummation
       abort @messages[:matriz_define] unless /\d\s{1}\d/ =~ matrix_size_and_operations_number
 
       # Separate KeyBoard Input
-      n_m = matrix_size_and_operations_number.split
-      n   = n_m.first.to_i
-      m   = n_m.last.to_i
+      n_m   = matrix_size_and_operations_number.split
+      n     = n_m.first.to_i
+      m     = n_m.last.to_i
+      @cube = nil
       # Constrains - Validate 1 <= N <= 100
       abort @messages[:size_n] if n < 1 && n > 100
       # Constrains - Validate 1 <= N <= 1000
@@ -88,7 +110,6 @@ class CubeSummation
     end
 
     def operation_prepare
-      print "promt/>:"
       # Get operation command
       operation_command = gets.chomp
       # Validate KeyBoard Input
@@ -126,4 +147,3 @@ end
 
 objeto = CubeSummation.new
 objeto.run
-puts "Finish!"
