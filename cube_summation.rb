@@ -54,25 +54,31 @@ class CubeSummation
     @cube = initialize_cube if @cube.nil?
       
     command.delete_at(0)
-    x     = command[0].to_i - 1 # X
-    y     = command[1].to_i - 1 # Y
-    z     = command[2].to_i - 1 # Z
-    value = command[3].to_i  # W
+    command = command.collect { |coordinate| coordinate.to_i - 1 }
+    validate_update_params(command)
 
-    set_coordenate_xyz(x, y, z, value)
+    x     = command[0].to_i     # X
+    y     = command[1].to_i     # Y
+    z     = command[2].to_i     # Z
+    value = command[3].to_i + 1 # W
+
+    set_coordinate_xyz(x, y, z, value)
   end
 
   def execute_query(command = [])
     @cube = initialize_cube if @cube.nil?
-    command.delete_at(0)
 
-    x1     = command[0].to_i - 1  # X1
-    y1     = command[1].to_i - 1  # Y1
-    z1     = command[2].to_i - 1  # Z1
+    command.delete_at(0)
+    command = command.collect { |coordinate| coordinate.to_i - 1 }
+    validate_query_params(command)
+
+    x1     = command[0].to_i  # X1
+    y1     = command[1].to_i  # Y1
+    z1     = command[2].to_i  # Z1
     # ============================
-    x2     = command[3].to_i - 1  # X2
-    y2     = command[4].to_i - 1  # Y2
-    z2     = command[5].to_i - 1  # Z2
+    x2     = command[3].to_i  # X2
+    y2     = command[4].to_i  # Y2
+    z2     = command[5].to_i  # Z2
 
     acum   = 0
 
@@ -126,7 +132,7 @@ class CubeSummation
       end
     end
 
-    def set_coordenate_xyz(x, y, z, value)
+    def set_coordinate_xyz(x, y, z, value)
       @cube[x][y][z] = value
     end
 
@@ -142,6 +148,38 @@ class CubeSummation
     def valid_command?(command)
       UPDATE_COMMAND =~ command || 
       QUERY_COMMAND  =~ command
+    end
+
+    def validate_update_params(params)
+      return false unless params.kind_of?(Array)
+      # ==========================
+      x     = params[0].to_i  # X
+      y     = params[1].to_i  # Y
+      z     = params[2].to_i  # Z
+      
+      coordinate_minor_regular_value = (x < 0  || y < 0  || z < 0)
+      coordinate_max_regular_value   = (x > @n || y > @n || z > @n)
+
+      abort @messages[:size_xyz] if coordinate_minor_regular_value || coordinate_max_regular_value
+    end
+
+    def validate_query_params(params)
+      return false unless params.kind_of?(Array)
+
+      # ==========================
+      x1     = params[0].to_i # X1
+      y1     = params[1].to_i # Y1
+      z1     = params[2].to_i # Z1
+      # ==========================
+      x2     = params[3].to_i # X2
+      y2     = params[4].to_i # Y2
+      z2     = params[5].to_i # Z2
+
+      abort @messages[:size_x] unless (x1 >= 0  &&  x1 <= x2 &&  x2 <= @n - 1) 
+      abort @messages[:size_y] unless (y1 >= 0  &&  y1 <= y2 &&  y2 <= @n - 1)
+      abort @messages[:size_z] unless (z1 >= 0  &&  z1 <= z2 &&  z2 <= @n - 1)
+      
+      true
     end
 end
 
