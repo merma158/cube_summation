@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7e11e178e4c50fb800eabdad987c31dd",
-    "content-hash": "c0d6f82bb640a6f3f72f4ee6706523d6",
+    "hash": "52e3e45bfa62a3c5d1f61e08b247cdd1",
+    "content-hash": "68d47bfdc5fb850116938c717b3407f0",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1980,6 +1980,49 @@
                 "test"
             ],
             "time": "2015-05-11 14:41:42"
+        },
+        {
+            "name": "laralib/l5scaffold",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laralib/l5scaffold.git",
+                "reference": "2c6741d4d9cb82216b386f33757b5c2ed2c2df07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laralib/l5scaffold/zipball/2c6741d4d9cb82216b386f33757b5c2ed2c2df07",
+                "reference": "2c6741d4d9cb82216b386f33757b5c2ed2c2df07",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Laralib\\L5scaffold\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fernando Brito",
+                    "email": "fernandobritofl@gmail.com"
+                }
+            ],
+            "description": "Extend Laravel 5's generators scaffold.",
+            "keywords": [
+                "generators",
+                "laravel",
+                "laravel5",
+                "scaffold"
+            ],
+            "time": "2016-04-22 18:48:53"
         },
         {
             "name": "mockery/mockery",
