@@ -20,4 +20,8 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::resource("cube_sumation_bases","CubeSumationBaseController");
 Route::resource("cube_sumation_iterations","CubeSumationIterationController");
+Route::get('cube_sumation_iterations/iterations_by_cube/{cube_id}', [
+    'as'   => 'iterations_by_cube', 
+    'uses' => 'CubeSumationIterationController@IterationsByCube'
+]);
 Route::resource("cube_sumation_commands","CubeSumationCommandController");

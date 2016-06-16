@@ -66,7 +66,16 @@ class CubeSumationIterationController extends Controller {
 
 		return view('cube_sumation_iterations.show', compact('cube_sumation_iteration'));
 	}
+	/**
+	 * Display a list of the resource by CubeId
+	 */
+	public function IterationsByCube($cube_id) {
+		$cube_sumation_iterations = CubeSumationIteration::IterationsByCube($cube_id)
+																										 ->orderBy('id', 'desc')
+																										 ->paginate(10);
 
+		return view('cube_sumation_iterations.index_by_cube', compact('cube_sumation_iterations'));	
+	}
 	/**
 	 * Show the form for editing the specified resource.
 	 *

@@ -12,6 +12,13 @@ class CubeSumationBase extends Model
     return $this->belongsTo('\App\User');
   }
 
+  /**
+   * Get the cube_sumation_iterations for the CubeSumationBase.
+   */
+  public function cube_sumation_iterations() {
+    return $this->hasMany('App\CubeSumationIteration');
+  }
+
   public static function getOpenCount() {
     if (Auth::user()) {
       return CubeSumationBase::where("status", "=", "open")

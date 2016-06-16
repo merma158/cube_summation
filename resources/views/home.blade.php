@@ -11,21 +11,19 @@
           <a href="{{ url('cube_sumation_bases') }}">
             <div class="col-md-4 text-center btn-primary">
               <h3>Cube Summation</h3>
-              <p class="primary">
-                  {{ \App\CubeSumationBase::getOpenCount() }}
-              </p>
+              <p>{{ \Auth::user()->Cubes() }}</p>
             </div>
           </a>
-          <a href="">
+          <a href="{{ url('cube_sumation_iterations') }}">
             <div class="col-md-4 text-center btn-danger">
-              <h3>Other Exercise</h3>
-              <p>0</p>
+              <h3>Cube Iterations</h3>
+              <p>{{ \Auth::user()->Iterations() }}</p>
             </div>
           </a>
           <a href="">
             <div class="col-md-4 text-center btn-success">
               <h3>Other Exercise</h3>
-              <p>0</p>
+              <p>{{ \Auth::user()->Cubes() }}</p>
             </div>
           </a>
 
