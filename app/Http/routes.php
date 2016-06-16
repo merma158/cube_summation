@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+Route::resource("cube_sumation_bases","CubeSumationBaseController");
+Route::resource("cube_sumation_iterations","CubeSumationIterationController");
+Route::resource("cube_sumation_commands","CubeSumationCommandController");
