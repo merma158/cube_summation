@@ -16,6 +16,7 @@ class CreateCubeSumationIterationsTable extends Migration {
       $table->increments('id');
       $table->integer('n');
       $table->integer('m');
+      $table->text('array_cube');
       $table->integer('cube_sumation_base_id')->unsigned();
       $table->foreign('cube_sumation_base_id')->references('id')->on('cube_sumation_bases');
       $table->timestamps();
