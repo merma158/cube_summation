@@ -38,4 +38,14 @@ class User extends Authenticatable
     }
     return $counter;
   }
+
+  public function Commands() {
+    $counter = 0;
+    foreach ($this->cube_sumation_bases()->get() as $key => $cube) {
+      foreach ($cube->cube_sumation_iterations()->get() as $key => $iteration) {
+        $counter += $iteration->cube_sumation_commands()->count();
+      }
+    }
+    return $counter;
+  }
 }

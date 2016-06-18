@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\CubeSumationBase;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class CubeSumationBaseController extends Controller {
 
@@ -59,6 +60,18 @@ class CubeSumationBaseController extends Controller {
 		$cube_sumation_base = CubeSumationBase::findOrFail($id);
 
 		return view('cube_sumation_bases.show', compact('cube_sumation_base'));
+	}
+
+	public function exec($id, Request $request) {
+		$cube_sumation_base = CubeSumationBase::findOrFail($id);
+		
+		if($request->ajax()){
+      return response()->json([
+        'resultset' => $cube_sumation_base->Run()
+      ]);
+    }
+
+    return $cube_sumation_base->Run();
 	}
 
 	/**

@@ -76,37 +76,6 @@ class CubeSumationIterationController extends Controller {
 
 		return view('cube_sumation_iterations.index_by_cube', compact('cube_sumation_iterations'));	
 	}
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$cube_sumation_iteration = CubeSumationIteration::findOrFail($id);
-
-		return view('cube_sumation_iterations.edit', compact('cube_sumation_iteration'));
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @param Request $request
-	 * @return Response
-	 */
-	public function update(Request $request, $id)
-	{
-		$cube_sumation_iteration = CubeSumationIteration::findOrFail($id);
-
-		$cube_sumation_iteration->n = $request->input("n");
-    $cube_sumation_iteration->m = $request->input("m");
-
-		$cube_sumation_iteration->save();
-
-		return redirect()->route('cube_sumation_iterations.index')->with('message', 'Item updated successfully.');
-	}
 
 	/**
 	 * Remove the specified resource from storage.

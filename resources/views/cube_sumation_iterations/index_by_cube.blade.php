@@ -20,6 +20,7 @@
                     <th>ID</th>
                     <th>N</th>
                     <th>M</th>
+                    <th>Commands to be Do</th>
                     <th>Cube</th>
                     <th class="text-right">OPTIONS</th>
                   </tr>
@@ -31,6 +32,7 @@
                       <td>{{$cube_sumation_iteration->id}}</td>
                       <td>{{$cube_sumation_iteration->n}}</td>
                       <td>{{$cube_sumation_iteration->m}}</td>
+                      <td>{{$cube_sumation_iteration->commands_to_be_do}}</td>
                       <td>
                         <a class="btn btn-xs btn-primary" href="{{ route('cube_sumation_bases.show', $cube_sumation_iteration->cube_sumation_base_id) }}">
                           <i class="glyphicon glyphicon-th"></i>
@@ -39,7 +41,8 @@
                       </td>
                       <td class="text-right">
                         <a class="btn btn-xs btn-primary" href="{{ route('cube_sumation_iterations.show', $cube_sumation_iteration->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>
-                        <a class="btn btn-xs btn-warning" href="{{ route('cube_sumation_iterations.edit', $cube_sumation_iteration->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                        <a class="btn btn-xs btn-success" href="{{ route('commands_by_iteration', $cube_sumation_iteration->id) }}"><i class="glyphicon glyphicon-list-alt"></i> Commands</a>
+                        <a class="btn btn-xs btn-warning" href="{{ route('create_by_iteration', $cube_sumation_iteration->id) }}"><i class="glyphicon glyphicon-cog"></i> Command</a>
                         <form action="{{ route('cube_sumation_iterations.destroy', $cube_sumation_iteration->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

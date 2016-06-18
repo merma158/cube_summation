@@ -20,10 +20,10 @@
               <p>{{ \Auth::user()->Iterations() }}</p>
             </div>
           </a>
-          <a href="">
+          <a href="{{ url('cube_sumation_commands') }}">
             <div class="col-md-4 text-center btn-success">
-              <h3>Other Exercise</h3>
-              <p>{{ \Auth::user()->Cubes() }}</p>
+              <h3>Cube Commands</h3>
+              <p>{{ \Auth::user()->Commands() }}</p>
             </div>
           </a>
 
