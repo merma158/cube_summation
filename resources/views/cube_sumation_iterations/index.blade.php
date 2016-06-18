@@ -42,7 +42,7 @@
                       <td class="text-right">
                         <a class="btn btn-xs btn-primary" href="{{ route('cube_sumation_iterations.show', $cube_sumation_iteration->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>
                         <a class="btn btn-xs btn-success" href="{{ route('commands_by_iteration', $cube_sumation_iteration->id) }}"><i class="glyphicon glyphicon-list-alt"></i> Commands</a>
-                        <a class="btn btn-xs btn-warning" href="{{ route('cube_sumation_commands.create') }}"><i class="glyphicon glyphicon-cog"></i> Command</a>
+                        <a class="btn btn-xs btn-warning" href="{{ route('create_by_iteration', $cube_sumation_iteration->id) }}"><i class="glyphicon glyphicon-cog"></i> Command</a>
                         <form action="{{ route('cube_sumation_iterations.destroy', $cube_sumation_iteration->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
