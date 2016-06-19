@@ -25,3 +25,25 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+## CubeSummation
+
+## Modelos y CallBacks
+
+- CubeSumationBase: Gestiona las pruebas generadas por el usuario, se generan pruebas si no hay alguna abierta|open
+- CubeSumationIteration: Gestiona la iteraciones de cada prueba, tamaño del cubo y nro. de operaciones
+- CubeSumationCommand: Almacena los comando ejecutados por iteración
+- CallBack: App\Providers\AppServiceProvider
+
+## Controladores
+
+- CubeSumationBaseController
+- CubeSumationIterationController
+- CubeSumationCommandController
+ 
+## Vistas
+
+- views\auth
+- views\cube_sumation_bases
+- views\cube_sumation_iterations
+- views\cube_sumation_commands
