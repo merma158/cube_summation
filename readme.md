@@ -47,3 +47,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - views\cube_sumation_bases
 - views\cube_sumation_iterations
 - views\cube_sumation_commands
+- views\refactory\post_confirm.php <== is refactor of your code
